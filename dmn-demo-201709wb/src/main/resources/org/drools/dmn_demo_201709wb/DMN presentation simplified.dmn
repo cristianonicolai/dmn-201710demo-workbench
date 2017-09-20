@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<semantic:definitions xmlns:semantic="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns="http://www.trisotech.com/definitions/_7c384ddf-28ea-49f1-92ad-5a742e935ee7" xmlns:feel="http://www.omg.org/spec/FEEL/20140401" xmlns:tc="http://www.omg.org/spec/DMN/20160719/testcase" xmlns:triso="http://www.trisotech.com/2015/triso/modeling" xmlns:trisofeed="http://trisotech.com/feed" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" exporter="DMN Modeler" exporterVersion="5.2.4.2" id="_7c384ddf-28ea-49f1-92ad-5a742e935ee7" name="DMN presentation simplified" namespace="http://www.trisotech.com/definitions/_7c384ddf-28ea-49f1-92ad-5a742e935ee7" triso:logoChoice="Default">
+  <semantic:extensionElements/>
+  <semantic:itemDefinition label="tApplication" name="tApplication">
+    <semantic:itemComponent id="_c8f93d54-2ce3-424c-9edd-750bc4a282ec" name="Name">
+      <semantic:typeRef>feel:string</semantic:typeRef>
+    </semantic:itemComponent>
+    <semantic:itemComponent id="_abb3ca48-1570-447c-9a29-39ac36ac4d9d" name="Age">
+      <semantic:typeRef>feel:number</semantic:typeRef>
+    </semantic:itemComponent>
+    <semantic:itemComponent id="_72b83cb4-94e9-48fc-97bd-68b262187631" name="Country">
+      <semantic:typeRef>feel:string</semantic:typeRef>
+    </semantic:itemComponent>
+    <semantic:itemComponent id="_b06be527-fe43-448e-aba4-cca074e0c488" name="Employed">
+      <semantic:typeRef>feel:boolean</semantic:typeRef>
+    </semantic:itemComponent>
+  </semantic:itemDefinition>
+  <semantic:inputData id="_fc64b893-8ff7-4b98-8fd5-a24dea3408cd" name="Application" triso:displayName="Application">
+    <semantic:variable id="_5389903f-c55f-4128-9285-2a2ae9752b2d" name="Application" typeRef="tApplication"/>
+  </semantic:inputData>
+  <semantic:decision id="_41809cc5-ce2e-4d0a-a058-316d7a2511f5" name="Application Risk" triso:displayName="Application Risk">
+    <semantic:variable id="_746e2365-bc82-44c5-89ec-9afe0de02803" name="Application Risk" typeRef="feel:string"/>
+    <semantic:informationRequirement>
+      <semantic:requiredInput href="#_fc64b893-8ff7-4b98-8fd5-a24dea3408cd"/>
+    </semantic:informationRequirement>
+    <semantic:decisionTable hitPolicy="UNIQUE" id="_7bafab46-9e88-4f3f-9b38-7db561bad8b5" outputLabel="Application Risk">
+      <semantic:input id="_5e677f2f-ff93-444b-a4d2-f7eba4c9329f">
+        <semantic:inputExpression typeRef="feel:number">
+          <semantic:text>Application.Age</semantic:text>
+        </semantic:inputExpression>
+      </semantic:input>
+      <semantic:input id="_52aed021-0cd4-48bc-9444-72379d9dad0f">
+        <semantic:inputExpression typeRef="feel:boolean">
+          <semantic:text>Application.Employed</semantic:text>
+        </semantic:inputExpression>
+      </semantic:input>
+      <semantic:output id="_0ed8bd6a-c9d6-442e-b150-2a357cf0fcd8">
+        <semantic:outputValues triso:constraintsType="enumeration">
+          <semantic:text>"High","Medium","Low"</semantic:text>
+        </semantic:outputValues>
+      </semantic:output>
+      <semantic:rule id="_af729ab8-1f84-4379-89f1-e997fdc64664">
+        <semantic:inputEntry id="_95e7726b-85fa-485d-8d28-fd5e61277c74">
+          <semantic:text>&gt;60</semantic:text>
+        </semantic:inputEntry>
+        <semantic:inputEntry id="_a640bfe3-fbc6-4eb1-a3be-cd11d999f9c7">
+          <semantic:text>true</semantic:text>
+        </semantic:inputEntry>
+        <semantic:outputEntry id="_e084ef10-5e4e-4a01-b1d7-65b03699cada">
+          <semantic:text>"Medium"</semantic:text>
+        </semantic:outputEntry>
+      </semantic:rule>
+      <semantic:rule id="_30c35580-aeb3-476f-b512-5d37ab73858f">
+        <semantic:inputEntry id="_615e057e-486f-44a9-9e4a-f70b74d8bfc8">
+          <semantic:text>&gt;60</semantic:text>
+        </semantic:inputEntry>
+        <semantic:inputEntry id="_15bda85d-21b2-4b10-85ff-f1f88e4eebd7">
+          <semantic:text>false</semantic:text>
+        </semantic:inputEntry>
+        <semantic:outputEntry id="_b331621f-c0f7-41b7-978a-a2e8fa4953dc">
+          <semantic:text>"High"</semantic:text>
+        </semantic:outputEntry>
+      </semantic:rule>
+      <semantic:rule id="_b1a59eec-3434-4b05-b0a8-7fb3901d8da6">
+        <semantic:inputEntry id="_f7c5bb7b-2b10-4210-b775-7db08ddf1470">
+          <semantic:text>[25..60]</semantic:text>
+        </semantic:inputEntry>
+        <semantic:inputEntry id="_def91fe3-dc4a-46ed-9810-d47d32cfec8c">
+          <semantic:text>-</semantic:text>
+        </semantic:inputEntry>
+        <semantic:outputEntry id="_bc512a51-0a8f-4907-aaa7-884406e750a0">
+          <semantic:text>"Low"</semantic:text>
+        </semantic:outputEntry>
+      </semantic:rule>
+      <semantic:rule id="_98c7da6f-6ed1-4faf-98c5-3a11cb723ee6">
+        <semantic:inputEntry id="_f8be8aa4-4509-4c4f-a8a0-84e264eb8c00">
+          <semantic:text>&lt;25</semantic:text>
+        </semantic:inputEntry>
+        <semantic:inputEntry id="_cd42a05f-f9a8-4c81-b0d6-659843a4657b">
+          <semantic:text>true</semantic:text>
+        </semantic:inputEntry>
+        <semantic:outputEntry id="_4d3ee2ae-04cc-4e18-b7e8-57cf4a10dd70">
+          <semantic:text>"Medium"</semantic:text>
+        </semantic:outputEntry>
+      </semantic:rule>
+      <semantic:rule id="_b1cd025b-0356-47d2-b4f8-6b90e352d105">
+        <semantic:inputEntry id="_534503d1-4344-48b1-b832-b238a894428e">
+          <semantic:text>&lt;25</semantic:text>
+        </semantic:inputEntry>
+        <semantic:inputEntry id="_1fd142de-7956-4bb1-83f3-428d794270ab">
+          <semantic:text>false</semantic:text>
+        </semantic:inputEntry>
+        <semantic:outputEntry id="_895e3f32-3bc0-4cdc-b1b2-11b1b5f59123">
+          <semantic:text>"High"</semantic:text>
+        </semantic:outputEntry>
+      </semantic:rule>
+    </semantic:decisionTable>
+  </semantic:decision>
+  <semantic:decision id="_c55dec84-6430-44ae-910d-1d7da778759d" name="Eligibility" triso:displayName="Eligibility">
+    <semantic:variable id="_bd7d7347-86c9-480c-81f3-a9497c3c3165" name="Eligibility" typeRef="feel:string"/>
+    <semantic:informationRequirement>
+      <semantic:requiredInput href="#_fc64b893-8ff7-4b98-8fd5-a24dea3408cd"/>
+    </semantic:informationRequirement>
+    <semantic:knowledgeRequirement>
+      <semantic:requiredKnowledge href="#_eee6a128-331a-4c1d-8fee-a4f3fed33112"/>
+    </semantic:knowledgeRequirement>
+    <semantic:invocation id="_6723dc26-3c68-40b1-917d-4e1612247099">
+      <semantic:literalExpression id="literal__6723dc26-3c68-40b1-917d-4e1612247099">
+        <semantic:text>Eligibility Rules</semantic:text>
+      </semantic:literalExpression>
+      <semantic:binding>
+        <semantic:parameter id="_08aaa8c8-d3c7-4dbb-833d-dcdf01ea4dbb" name="is employed"/>
+        <semantic:literalExpression id="_560187ad-dfa9-490b-8a95-983db4b75fa7">
+          <semantic:text>Application.Employed</semantic:text>
+        </semantic:literalExpression>
+      </semantic:binding>
+      <semantic:binding>
+        <semantic:parameter id="_e330c871-fb5e-4ee5-bca4-fb0c6fb96818" name="Age"/>
+        <semantic:literalExpression id="_852da1da-9f46-4a69-9233-5845d14fa291">
+          <semantic:text>Application.Age</semantic:text>
+        </semantic:literalExpression>
+      </semantic:binding>
+    </semantic:invocation>
+  </semantic:decision>
+  <semantic:decision id="_8681263f-92fe-459e-ae76-c95a44092a79" name="Routing" triso:displayName="Routing">
+    <semantic:variable id="_bbb2ee68-3c4e-4e3d-91e0-91b0c9ef82a4" name="Routing" typeRef="feel:string"/>
+    <semantic:informationRequirement>
+      <semantic:requiredDecision href="#_41809cc5-ce2e-4d0a-a058-316d7a2511f5"/>
+    </semantic:informationRequirement>
+    <semantic:informationRequirement>
+      <semantic:requiredDecision href="#_c55dec84-6430-44ae-910d-1d7da778759d"/>
+    </semantic:informationRequirement>
+    <semantic:informationRequirement>
+      <semantic:requiredInput href="#_fc64b893-8ff7-4b98-8fd5-a24dea3408cd"/>
+    </semantic:informationRequirement>
+    <semantic:decisionTable hitPolicy="PRIORITY" id="_98cf736d-3d13-4a63-8352-20a5d2d44256" outputLabel="Routing">
+      <semantic:input id="_5d14502b-1c8f-4d7e-843e-12d9cb8dfb76">
+        <semantic:inputExpression typeRef="feel:string">
+          <semantic:text>Application Risk</semantic:text>
+        </semantic:inputExpression>
+        <semantic:inputValues triso:constraintsType="enumeration">
+          <semantic:text>"High","Medium","Low"</semantic:text>
+        </semantic:inputValues>
+      </semantic:input>
+      <semantic:input id="_8e4417dd-2eec-4e39-a284-f2aadcfa5852">
+        <semantic:inputExpression typeRef="feel:string">
+          <semantic:text>Eligibility</semantic:text>
+        </semantic:inputExpression>
+        <semantic:inputValues triso:constraintsType="enumeration">
+          <semantic:text>"INELIGIBLE","ELIGIBLE"</semantic:text>
+        </semantic:inputValues>
+      </semantic:input>
+      <semantic:output id="_8b4f5acf-1990-4ea1-b2c6-b1b52d7e73ef">
+        <semantic:outputValues triso:constraintsType="enumeration">
+          <semantic:text>"ACCEPT","DECLINE"</semantic:text>
+        </semantic:outputValues>
+      </semantic:output>
+      <semantic:rule id="_e973ffed-94ac-43b8-82a0-d47eb7236719">
+        <semantic:inputEntry id="_8c0b3cf6-d9ca-4de1-a5fa-7770a6d1712e">
+          <semantic:text>-</semantic:text>
+        </semantic:inputEntry>
+        <semantic:inputEntry id="_a911ef7a-8017-4b4f-9f50-e3fd2f129c9c">
+          <semantic:text>"INELIGIBLE"</semantic:text>
+        </semantic:inputEntry>
+        <semantic:outputEntry id="_3a064eca-7c6b-41e1-a1c7-0e89936a6307">
+          <semantic:text>"DECLINE"</semantic:text>
+        </semantic:outputEntry>
+      </semantic:rule>
+      <semantic:rule id="_57a732aa-9329-4449-9cf5-7f3c3a8e3500">
+        <semantic:inputEntry id="_fdb90de0-60da-4575-87fd-acf165def067">
+          <semantic:text>"High"</semantic:text>
+        </semantic:inputEntry>
+        <semantic:inputEntry id="_f5d2541b-01a0-46a4-8cb9-f81a4445b084">
+          <semantic:text>-</semantic:text>
+        </semantic:inputEntry>
+        <semantic:outputEntry id="_8300081b-1b9f-49cc-8f42-ab75b438b41b">
+          <semantic:text>"DECLINE"</semantic:text>
+        </semantic:outputEntry>
+      </semantic:rule>
+      <semantic:rule id="_0455585d-c4e8-411d-90b9-32d7437a9837">
+        <semantic:inputEntry id="_bc096593-08fb-4a99-bc41-ccd517e3bdf5">
+          <semantic:text>-</semantic:text>
+        </semantic:inputEntry>
+        <semantic:inputEntry id="_3b4dde2c-f2be-4326-944a-9cedc61fe538">
+          <semantic:text>-</semantic:text>
+        </semantic:inputEntry>
+        <semantic:outputEntry id="_52d4f4b1-840f-493c-b3be-55883758c170">
+          <semantic:text>"ACCEPT"</semantic:text>
+        </semantic:outputEntry>
+      </semantic:rule>
+    </semantic:decisionTable>
+  </semantic:decision>
+  <semantic:businessKnowledgeModel id="_eee6a128-331a-4c1d-8fee-a4f3fed33112" name="Eligibility Rules" triso:displayName="Eligibility Rules">
+    <semantic:encapsulatedLogic>
+      <semantic:formalParameter name="is employed" typeRef="feel:boolean"/>
+      <semantic:formalParameter name="Age" typeRef="feel:number"/>
+      <semantic:decisionTable hitPolicy="PRIORITY" id="_df88fc42-8b18-44e2-9a56-c4349d5495d5" outputLabel="Eligibility Rules">
+        <semantic:input id="_828cef91-c147-4a37-a89f-7777c08abee6">
+          <semantic:inputExpression typeRef="feel:boolean">
+            <semantic:text>is employed</semantic:text>
+          </semantic:inputExpression>
+        </semantic:input>
+        <semantic:input id="_04fa7d8e-1049-4f02-94c8-517f39c6492b">
+          <semantic:inputExpression typeRef="feel:number">
+            <semantic:text>Age</semantic:text>
+          </semantic:inputExpression>
+        </semantic:input>
+        <semantic:output id="_7e74efcb-86dd-440b-88e8-aff379b9bb58">
+          <semantic:outputValues triso:constraintsType="enumeration">
+            <semantic:text>"INELIGIBLE","ELIGIBLE"</semantic:text>
+          </semantic:outputValues>
+        </semantic:output>
+        <semantic:rule id="_e2282b46-8e38-46e4-8671-aa46954dce6a">
+          <semantic:inputEntry id="_666a93a0-2d69-4218-abbc-c5492abbdada">
+            <semantic:text>false</semantic:text>
+          </semantic:inputEntry>
+          <semantic:inputEntry id="_48669559-aeaa-40cc-966b-d3146fe4b6ee">
+            <semantic:text>-</semantic:text>
+          </semantic:inputEntry>
+          <semantic:outputEntry id="_51ede2f3-7c17-4a17-90b9-fbec071e5d9f">
+            <semantic:text>"INELIGIBLE"</semantic:text>
+          </semantic:outputEntry>
+        </semantic:rule>
+        <semantic:rule id="_22164ecd-3de8-4aef-9070-588e76081109">
+          <semantic:inputEntry id="_e0edfab6-3d55-4732-8bb9-85ce38b73af8">
+            <semantic:text>-</semantic:text>
+          </semantic:inputEntry>
+          <semantic:inputEntry id="_57621860-716f-46ac-881e-a7d7f524da96">
+            <semantic:text>&lt;18</semantic:text>
+          </semantic:inputEntry>
+          <semantic:outputEntry id="_b1f85271-3389-4afe-bd20-e8ab15ce2be4">
+            <semantic:text>"INELIGIBLE"</semantic:text>
+          </semantic:outputEntry>
+        </semantic:rule>
+        <semantic:rule id="_955cd026-8fdc-4a98-8ec2-581f36cc644d">
+          <semantic:inputEntry id="_e8bdd176-0d6d-4d0e-89d6-350d2184504f">
+            <semantic:text>-</semantic:text>
+          </semantic:inputEntry>
+          <semantic:inputEntry id="_699f7a28-fc89-48d9-a644-df6b97066fbb">
+            <semantic:text>-</semantic:text>
+          </semantic:inputEntry>
+          <semantic:outputEntry id="_6fc51f33-1678-4115-becc-e633ce7f1084">
+            <semantic:text>"ELIGIBLE"</semantic:text>
+          </semantic:outputEntry>
+        </semantic:rule>
+      </semantic:decisionTable>
+    </semantic:encapsulatedLogic>
+    <semantic:variable id="_92d9cb57-8728-42b3-b40c-8ecfbcfd953e" name="Eligibility Rules" typeRef="feel:string"/>
+  </semantic:businessKnowledgeModel>
+</semantic:definitions>
