@@ -67,4 +67,9 @@ public class Monthly implements java.io.Serializable {
 		this.insurance = insurance;
 	}
 
+    @Override
+    public String toString() {
+        return "Monthly [income=" + income + ", repayments=" + repayments + ", expenses=" + expenses + ", tax=" + tax + ", insurance=" + insurance + "]";
+    }
+
 }

@@ -56,4 +56,9 @@ public class RequestedProduct implements java.io.Serializable {
 		this.amount = amount;
 	}
 
+    @Override
+    public String toString() {
+        return "RequestedProduct [type=" + type + ", rate=" + rate + ", term=" + term + ", amount=" + amount + "]";
+    }
+
 }

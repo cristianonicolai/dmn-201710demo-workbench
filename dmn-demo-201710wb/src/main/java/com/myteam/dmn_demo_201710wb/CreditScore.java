@@ -25,4 +25,9 @@ public class CreditScore implements java.io.Serializable {
 		this.FICO = FICO;
 	}
 
+    @Override
+    public String toString() {
+        return "CreditScore [FICO=" + FICO + "]";
+    }
+
 }
