@@ -7,6 +7,13 @@
   <version>1.0</version>
   <packaging>kjar</packaging>
   <name>dmn-demo-201710wb</name>
+  <dependencies>
+    <dependency>
+      <groupId>org.kie</groupId>
+      <artifactId>kie-dmn-api</artifactId>
+      <version>7.3.0.Final</version>
+    </dependency>
+  </dependencies>
   <repositories>
     <repository>
       <id>guvnor-m2-repo</id>
