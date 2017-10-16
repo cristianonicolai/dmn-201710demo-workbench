@@ -24,9 +24,6 @@ public class DMNModelsTest {
 
         DMNRuntime dmnRuntime = kieContainer.newKieSession().getKieRuntime(DMNRuntime.class);
 
-        DMNModel dmnModel = dmnRuntime.getModel("http://www.trisotech.com/definitions/_1d6da4b6-ac55-4921-8353-9a6fa05ba5c6", "Loan Pre-Qualification");
-
-        DMNContext dmnContext = dmnRuntime.newContext();
         ApplicantData applicantData = new ApplicantData();
         applicantData.setAge(51);
         applicantData.setMaritalStatus("M");
@@ -46,17 +43,39 @@ public class DMNModelsTest {
         CreditScore creditScore = new CreditScore();
         creditScore.setFICO(EvalHelper.getBigDecimalOrNull(650));
 
-        dmnContext.set("Applicant Data", applicantData);
-        dmnContext.set("Requested Product", requestedProduct);
-        dmnContext.set("Credit Score", creditScore);
+        {
+            DMNModel dmnModel = dmnRuntime.getModel("http://www.trisotech.com/definitions/_1d6da4b6-ac55-4921-8353-9a6fa05ba5c6", "Loan Pre-Qualification");
 
-        DMNResult dmnResult = dmnRuntime.evaluateAll(dmnModel, dmnContext);
-        System.out.println(dmnResult);
+            DMNContext dmnContext = dmnRuntime.newContext();
+            dmnContext.set("Applicant Data", applicantData);
+            dmnContext.set("Requested Product", requestedProduct);
+            dmnContext.set("Credit Score", creditScore);
 
-        for (DMNDecisionResult dr : dmnResult.getDecisionResults()) {
-            System.out.println("Decision '" + dr.getDecisionName() + "' : " + dr.getResult());
+            DMNResult dmnResult = dmnRuntime.evaluateAll(dmnModel, dmnContext);
+            System.out.println(dmnResult);
+
+            for (DMNDecisionResult dr : dmnResult.getDecisionResults()) {
+                System.out.println("Decision '" + dr.getDecisionName() + "' : " + dr.getResult());
+            }
+
+            assertEquals(((Map) dmnResult.getDecisionResultByName("Loan Pre-Qualification").getResult()).get("Qualification"), "Qualified");
         }
+        {
+            DMNModel dmnModel = dmnRuntime.getModel("http://www.trisotech.com/definitions/_bb56d276-c1b0-4bbf-b4d4-03aae8e40a73", "PROXY Loan Pre-Qualification");
 
-        assertEquals(((Map) dmnResult.getDecisionResultByName("Loan Pre-Qualification").getResult()).get("Qualification"), "Qualified");
+            DMNContext dmnContext = dmnRuntime.newContext();
+            dmnContext.set("ApplicantData", applicantData);
+            dmnContext.set("RequestedProduct", requestedProduct);
+            dmnContext.set("CreditScore", creditScore);
+
+            DMNResult dmnResult = dmnRuntime.evaluateAll(dmnModel, dmnContext);
+            System.out.println(dmnResult);
+
+            for (DMNDecisionResult dr : dmnResult.getDecisionResults()) {
+                System.out.println("Decision '" + dr.getDecisionName() + "' : " + dr.getResult());
+            }
+
+            assertEquals(dmnResult.getDecisionResultByName("LoanPre-Qualification").getResult(), "Qualified");
+        }
     }
 }
