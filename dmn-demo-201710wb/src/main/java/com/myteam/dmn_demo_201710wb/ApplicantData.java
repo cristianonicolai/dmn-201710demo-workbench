@@ -9,13 +9,13 @@ public class ApplicantData implements java.io.Serializable {
 	static final long serialVersionUID = 1L;
 
 	private java.lang.Integer age;
-	@org.kie.api.definition.type.Label(value = "Marital Status")
+	@org.kie.api.definition.type.Label("Marital Status")
 	private java.lang.String maritalStatus;
-	@org.kie.api.definition.type.Label(value = "Employment Status")
+	@org.kie.api.definition.type.Label("Employment Status")
 	private java.lang.String employmentStatus;
-	@org.kie.api.definition.type.Label(value = "Existing Customer")
+	@org.kie.api.definition.type.Label("Existing Customer")
 	private java.lang.Boolean existingCustomer;
-	private com.myteam.dmn_demo_201710wb.ApplicantData monthly;
+	private Monthly monthly;
 
 	public ApplicantData() {
 	}
@@ -52,18 +52,18 @@ public class ApplicantData implements java.io.Serializable {
 		this.existingCustomer = existingCustomer;
 	}
 
-	public com.myteam.dmn_demo_201710wb.ApplicantData getMonthly() {
+	public com.myteam.dmn_demo_201710wb.Monthly getMonthly() {
 		return this.monthly;
 	}
 
-	public void setMonthly(com.myteam.dmn_demo_201710wb.ApplicantData monthly) {
+	public void setMonthly(com.myteam.dmn_demo_201710wb.Monthly monthly) {
 		this.monthly = monthly;
 	}
 
 	public ApplicantData(java.lang.Integer age, java.lang.String maritalStatus,
 			java.lang.String employmentStatus,
 			java.lang.Boolean existingCustomer,
-			com.myteam.dmn_demo_201710wb.ApplicantData monthly) {
+			com.myteam.dmn_demo_201710wb.Monthly monthly) {
 		this.age = age;
 		this.maritalStatus = maritalStatus;
 		this.employmentStatus = employmentStatus;
