@@ -6,12 +6,69 @@ package com.myteam.dmn_demo_201710wb;
 
 public class ApplicantData implements java.io.Serializable {
 
-    static final long serialVersionUID = 1L;
+	static final long serialVersionUID = 1L;
 
-    public ApplicantData() {
-    }
+	private java.lang.Integer age;
+	@org.kie.api.definition.type.Label(value = "Marital Status")
+	private java.lang.String maritalStatus;
+	@org.kie.api.definition.type.Label(value = "Employment Status")
+	private java.lang.String employmentStatus;
+	@org.kie.api.definition.type.Label(value = "Existing Customer")
+	private java.lang.Boolean existingCustomer;
+	private com.myteam.dmn_demo_201710wb.ApplicantData monthly;
 
+	public ApplicantData() {
+	}
 
+	public java.lang.Integer getAge() {
+		return this.age;
+	}
 
+	public void setAge(java.lang.Integer age) {
+		this.age = age;
+	}
+
+	public java.lang.String getMaritalStatus() {
+		return this.maritalStatus;
+	}
+
+	public void setMaritalStatus(java.lang.String maritalStatus) {
+		this.maritalStatus = maritalStatus;
+	}
+
+	public java.lang.String getEmploymentStatus() {
+		return this.employmentStatus;
+	}
+
+	public void setEmploymentStatus(java.lang.String employmentStatus) {
+		this.employmentStatus = employmentStatus;
+	}
+
+	public java.lang.Boolean getExistingCustomer() {
+		return this.existingCustomer;
+	}
+
+	public void setExistingCustomer(java.lang.Boolean existingCustomer) {
+		this.existingCustomer = existingCustomer;
+	}
+
+	public com.myteam.dmn_demo_201710wb.ApplicantData getMonthly() {
+		return this.monthly;
+	}
+
+	public void setMonthly(com.myteam.dmn_demo_201710wb.ApplicantData monthly) {
+		this.monthly = monthly;
+	}
+
+	public ApplicantData(java.lang.Integer age, java.lang.String maritalStatus,
+			java.lang.String employmentStatus,
+			java.lang.Boolean existingCustomer,
+			com.myteam.dmn_demo_201710wb.ApplicantData monthly) {
+		this.age = age;
+		this.maritalStatus = maritalStatus;
+		this.employmentStatus = employmentStatus;
+		this.existingCustomer = existingCustomer;
+		this.monthly = monthly;
+	}
 
 }
