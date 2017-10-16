@@ -6,12 +6,23 @@ package com.myteam.dmn_demo_201710wb;
 
 public class CreditScore implements java.io.Serializable {
 
-    static final long serialVersionUID = 1L;
+	static final long serialVersionUID = 1L;
 
-    public CreditScore() {
-    }
+	private java.math.BigDecimal FICO;
 
+	public CreditScore() {
+	}
 
+	public java.math.BigDecimal getFICO() {
+		return this.FICO;
+	}
 
+	public void setFICO(java.math.BigDecimal FICO) {
+		this.FICO = FICO;
+	}
+
+	public CreditScore(java.math.BigDecimal FICO) {
+		this.FICO = FICO;
+	}
 
 }
